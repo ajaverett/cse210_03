@@ -6,8 +6,8 @@ from word import Word
 class Director:
 
     def __init__(self):
-        self.is_playing = True
-        self.lives = 7
+        self._is_playing = True
+        self._lives = 7
 
     def start_game(self):
         while self.is_playing:
