@@ -1,19 +1,19 @@
-from random_words import RandomWords
-
-"""
-To install this module - use 'pip install RandomWords'
-
-"""
+import random
 
 class Word:
 
     def __init__(self):
-        r = RandomWords()
-        self._random_word = r.random_word()
+        self._random_word = " "
         self.letter_list = []
         pass
 
+
+
     def pick_word(self):
+        with open("lower_words.txt", "r") as file:
+            allwords = file.read()
+            words = list(map(str, allwords.split()))
+            self._random_word = random.choice(words)
         return self._random_word
 
     def make_letter_list(self, random_word):
