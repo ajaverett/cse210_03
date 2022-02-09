@@ -10,21 +10,21 @@ class Director:
         self._lives = 7
 
     def _start_game(self):
+        self._start_input()
         while self._is_playing:
-            self._start_game()
             self._show_screen()
             self._do_checks()
 
     #input will lead to gameplay
-    def _start_game(self):
-        is_playing = (input("Play Jumper? [y/n] ").lower() in ['y','yes'])
+    def _start_input(self):
+        self._is_playing = (input("Play Jumper? [y/n] ").lower() in ['y','yes'])
     
     #will display screen first, print whatever Jumper returns
     def _show_screen(self):
+        jumper = Jumper()
+        if self._is_playing == True:
 
-        if self.is_playing == True:
-
-            Jumper.display_parachute(self._lives) 
+            jumper.display_parachute(self._lives) 
 
     #if Guess class returns false, lose life
     def _do_checks(self):
@@ -35,6 +35,8 @@ class Director:
             self.lives -= 1
         else:
             pass
+        if self.lives <= 0:
+            self._is_playing = False
 
 
 
