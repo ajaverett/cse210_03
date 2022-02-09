@@ -21,11 +21,10 @@ class Director:
     
     #will display screen first, print whatever Jumper returns
     def show_screen(self):
-        screen = Jumper.display_parachute(self.lives)
 
         if self.is_playing == True:
 
-            print(screen) 
+            Jumper.display_parachute(self.lives) 
 
     #if Guess class returns false, lose life
     def do_checks(self):
