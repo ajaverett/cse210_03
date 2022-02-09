@@ -4,7 +4,7 @@ class Jumper:
 
     def display_parachute(self, lives):
         if lives == 0:
-            return False
+            return 'False'
 
         #removes elements that are no longer present because of incorrect guesses
         for i in range(0, (8- lives)):
