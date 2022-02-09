@@ -1,9 +1,15 @@
-import random
+from random_words import RandomWords
+
+"""
+To install this module - use 'pip install RandomWords'
+
+"""
+
 class Word:
 
     def __init__(self):
-        self._word_list = ["Gimbus", "Elf", "Your", "Mom", "Cookie", "Jack", "Train"]
-        self._random_word = random.choice(self._word_list)
+        r = RandomWords()
+        self._random_word = r.random_word()
         self.letter_list = []
         pass
 
