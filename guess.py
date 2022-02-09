@@ -18,10 +18,9 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        player_input = None
-        word = []
-        underscore_word = []
-        correct_index = None
+        _word = []
+        _underscore_word = []
+        _correct_index = None
 
 
     def initialize_word(self):
@@ -30,11 +29,11 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        word_class = Word()
-        self.word = word_class.break_word()
+        _word_class = Word()
+        self._word = _word_class.break_word()
 
-        for letter in self.word:
-            self.underscore_word.append('_')               
+        for letter in self._word:
+            self._underscore_word.append('_')               
     
 
     def check_word(self):
@@ -44,9 +43,9 @@ class Guess:
             self (Guess): an instance of Guess.
         """
         player_input = input("What letter are you guessing?: ").lower()
-        if player_input in self.word:
-            self.correct_index = self.word.index(player_input)
-            self.underscore_word[self.correct_index] = player_input
+        if player_input in self._word:
+            self._correct_index = self._word.index(player_input)
+            self._underscore_word[self._correct_index] = player_input
             return False
         else:
             return True
@@ -58,4 +57,4 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        print(self.underscore_word)
+        print(self._underscore_word)
