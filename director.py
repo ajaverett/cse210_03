@@ -7,7 +7,7 @@ class Director:
 
     def __init__(self):
         self._is_playing = True
-        self._lives = 7
+        self._lives = 8
 
     def _start_game(self):
         self._start_input()
