@@ -63,3 +63,9 @@ class Guess:
         for i in range(0, len(self._underscore_word)):
             print(self._underscore_word[i], end ="     ")
         print("")
+    
+    def check_win(self):
+        for i in range(0,len(self._underscore_word)):
+            if (self._underscore_word[i] == "_"):
+                return True
+        return False
