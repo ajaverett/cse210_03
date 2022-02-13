@@ -44,9 +44,13 @@ class Guess:
         """
         int = len(self._word)
         array = Word._make_letter_list(self._word_class, self._word)
+        num = int
         for i in range(0, int):
             if player_input == array[i]:
                 self._underscore_word[i] = player_input
+                num = num - 1
+        if(num == int):
+            return True
         return False
 
     
