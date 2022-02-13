@@ -32,7 +32,7 @@ class Director:
     def _do_checks(self):
         player_input = input("What letter are you guessing?: ").lower()
         lose_life = self._guess.check_word(player_input)
-        print(self._guess.display_word())
+        self._guess.display_word()
         if lose_life == True:
             self._lives -= 1
         else:

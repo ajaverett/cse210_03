@@ -29,8 +29,8 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        _word_class = Word()
-        self._word = "hello"
+        self._word_class = Word()
+        self._word = self._word_class._pick_word()
 
         for letter in self._word:
             self._underscore_word.append('_')               
@@ -43,13 +43,10 @@ class Guess:
             self (Guess): an instance of Guess.
         """
         int = len(self._word)
-        print(int)
-        for i in (0, int):
-            if player_input in self._word:
-                self._correct_index = self._word.index(player_input)
-                self._underscore_word[self._correct_index] = player_input
-            else:
-                return True
+        array = Word._make_letter_list(self._word_class, self._word)
+        for i in range(0, int):
+            if player_input == array[i]:
+                self._underscore_word[i] = player_input
         return False
 
     
@@ -59,4 +56,6 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        print(self._underscore_word)
+        for i in range(0, len(self._underscore_word)):
+            print(self._underscore_word[i], end ="     ")
+        print("")
