@@ -6,16 +6,17 @@ from word import Word
 class Director:
 
     def __init__(self):
-        self._is_playing = True
         self._guess = Guess()
+        self._is_playing = self._guess.check_win()
         self._guess.initialize_word()
         self._lives = 8
 
     def _start_game(self):
         self._start_input()
-        while self._is_playing:
-            self._show_screen()
-            self._do_checks()
+        if self._is_playing:
+            while self._guess.check_win():
+                self._show_screen()
+                self._do_checks()
 
     #input will lead to gameplay
     def _start_input(self):
