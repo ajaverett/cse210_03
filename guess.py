@@ -18,9 +18,9 @@ class Guess:
         Args:
             self (Guess): an instance of Guess.
         """
-        _word = []
-        _underscore_word = []
-        _correct_index = None
+        self._word = []
+        self._underscore_word = []
+        self._correct_index = None
 
 
     def initialize_word(self):
@@ -30,25 +30,27 @@ class Guess:
             self (Guess): an instance of Guess.
         """
         _word_class = Word()
-        self._word = _word_class.break_word()
+        self._word = "hello"
 
         for letter in self._word:
             self._underscore_word.append('_')               
     
 
-    def check_word(self):
+    def check_word(self, player_input):
         """Asks for a player input and compare it to the word to see if its within. If so it will add it to the underscore list in the same index as the index in the word.
         
         Args:
             self (Guess): an instance of Guess.
         """
-        player_input = input("What letter are you guessing?: ").lower()
-        if player_input in self._word:
-            self._correct_index = self._word.index(player_input)
-            self._underscore_word[self._correct_index] = player_input
-            return False
-        else:
-            return True
+        int = len(self._word)
+        print(int)
+        for i in (0, int):
+            if player_input in self._word:
+                self._correct_index = self._word.index(player_input)
+                self._underscore_word[self._correct_index] = player_input
+            else:
+                return True
+        return False
 
     
     def display_word(self):

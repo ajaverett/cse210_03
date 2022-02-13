@@ -7,6 +7,8 @@ class Director:
 
     def __init__(self):
         self._is_playing = True
+        self._guess = Guess()
+        self._guess.initialize_word()
         self._lives = 8
 
     def _start_game(self):
@@ -28,14 +30,14 @@ class Director:
 
     #if Guess class returns false, lose life
     def _do_checks(self):
-
-        guess = Guess()
-        lose_life = guess.check_word()
+        player_input = input("What letter are you guessing?: ").lower()
+        lose_life = self._guess.check_word(player_input)
+        print(self._guess.display_word())
         if lose_life == True:
-            self.lives -= 1
+            self._lives -= 1
         else:
             pass
-        if self.lives <= 0:
+        if self._lives <= 0:
             self._is_playing = False
 
 
