@@ -1,4 +1,5 @@
 from game.shared.point import Point
+import random
 
 
 class Director:
@@ -45,8 +46,10 @@ class Director:
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
         artifacts = cast.get_actors("artifacts")
-        artifact_velocity = Point(0,1)
+
         for i in range(0, len(artifacts)):
+            y_velocity = random.randint(4,20)
+            artifact_velocity = Point(0,y_velocity)
             artifacts[i].set_velocity(artifact_velocity)
 
     def _do_updates(self, cast):
