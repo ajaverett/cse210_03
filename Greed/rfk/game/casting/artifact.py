@@ -12,15 +12,23 @@ class Artifact(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._message = ""
+        if super().get_text() == chr(34):
+            self._message = True
+        else:
+            self._message = False
         
-    def get_message(self):
+    def get_score(self):
         """Gets the artifact's message.
         
         Returns:
             string: The message.
         """
-        return self._message
+        if self._message:
+            score_change = 100
+        else:
+            score_change = -100
+            
+        return score_change
     
     def set_message(self, message):
         """Updates the message to the given one.

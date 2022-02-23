@@ -48,8 +48,7 @@ class Director:
         artifacts = cast.get_actors("artifacts")
 
         for i in range(0, len(artifacts)):
-            y_velocity = random.randint(4,20)
-            artifact_velocity = Point(0,y_velocity)
+            artifact_velocity = Point(0,1)
             artifacts[i].set_velocity(artifact_velocity)
 
     def _do_updates(self, cast):
@@ -72,7 +71,8 @@ class Director:
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
+                message = artifact.get_score()
+                self._score = message + self._score
         banner.set_text(f"Score: {self._score}")
         
     def _do_outputs(self, cast):
