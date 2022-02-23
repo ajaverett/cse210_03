@@ -1,3 +1,6 @@
+from game.shared.point import Point
+
+
 class Director:
     """A person who directs the game. 
     
@@ -42,8 +45,9 @@ class Director:
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
         artifacts = cast.get_actors("artifacts")
+        artifact_velocity = Point(0,1)
         for i in range(0, len(artifacts)):
-            artifacts[i].set_velocity(velocity)
+            artifacts[i].set_velocity(artifact_velocity)
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
