@@ -2,6 +2,8 @@ from game.shared.point import Point
 import random
 
 
+
+
 class Director:
     """A person who directs the game. 
     
@@ -30,6 +32,13 @@ class Director:
             cast (Cast): The cast of actors.
         """
         self._video_service.open_window()
+
+        artifacts = cast.get_actors("artifacts")
+
+        for i in range(0, len(artifacts)):
+            artifact_velocity = Point(0,random.randint(1,6))
+            artifacts[i].set_velocity(artifact_velocity)
+
         while self._video_service.is_window_open():
             self._get_inputs(cast)
             self._do_updates(cast)
@@ -45,11 +54,8 @@ class Director:
         robot = cast.get_first_actor("robots")
         velocity = self._keyboard_service.get_direction()
         robot.set_velocity(velocity)        
-        artifacts = cast.get_actors("artifacts")
 
-        for i in range(0, len(artifacts)):
-            artifact_velocity = Point(0,1)
-            artifacts[i].set_velocity(artifact_velocity)
+       
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -73,6 +79,7 @@ class Director:
             if robot.get_position().equals(artifact.get_position()):
                 message = artifact.get_score()
                 self._score = message + self._score
+                artifact.set_position(Point(random.randint(0,self._video_service.get_width()),0))
         banner.set_text(f"Score: {self._score}")
         
     def _do_outputs(self, cast):

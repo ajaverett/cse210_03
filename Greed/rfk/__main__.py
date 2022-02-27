@@ -14,15 +14,14 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 
-FRAME_RATE = 60
+FRAME_RATE = 30
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
-FONT_SIZE = 15
+FONT_SIZE = 30
 COLS = 60
 ROWS = 40
 CAPTION = "Robot Finds Kitten"
-DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
 
@@ -42,7 +41,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(585)
+    y = int(MAX_Y - FONT_SIZE)
     position = Point(x, y)
 
     robot = Actor()
@@ -53,17 +52,15 @@ def main():
     cast.add_actor("robots", robot)
     
     # create the artifacts
-    with open(DATA_PATH) as file:
-        data = file.read()
-        messages = data.splitlines()
-
     for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 34))
+        text = random.randint(1,2)
+        if text == 1:
+            text = ("*")
         
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 20)
-        position = Point(x, y)
+        position = Point(x, 0)
         position = position.scale(CELL_SIZE)
 
         r = random.randint(0, 255)
